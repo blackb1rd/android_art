@@ -1218,7 +1218,7 @@ std::string GetDalvikCacheFilenameOrDie(const std::string& location) {
 #ifdef ALLOW_DEXROOT_ON_CACHE
   char dexoptDataOnly[PROPERTY_VALUE_MAX];
   property_get("dalvik.vm.dexopt-data-only", dexoptDataOnly, "1");
-  if ((StartsWith(location, "/system")) && (strcmp(dexoptDataOnly, "1") != 0)) {
+  if ((StartsWith(location, "/system") || StartsWith(location, "/data")) && (strcmp(dexoptDataOnly, "1") != 0)) {
       dalvik_cache = GetDalvikCacheOrDie(GetAndroidCache());
   }
 #endif
